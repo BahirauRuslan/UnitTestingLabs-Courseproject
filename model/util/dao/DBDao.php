@@ -5,15 +5,58 @@ require_once "IDao.php";
 abstract class DBDao implements IDao
 {
     private $db;
+    private $table_name;
 
-    public abstract function getBy($column_name, $value);
-    public abstract function deleteBy($column_name, $value);
-    public abstract function getColumnBy($column, $value, $get_column);
-    public abstract function updateColumnBy($column, $value, $update_column, $update_value);
+    protected abstract function convert($rec);
 
-    public function __construct($mysqli)
+    public function __construct($mysqli, $table_name)
     {
         $this->db = $mysqli;
+        $this->table_name = $table_name;
+    }
+
+    public function getAll()
+    {
+        $items = array();
+        $records = $this->getDb()->query("SELECT * FROM `$this->table_name`");
+        while ($rec = $records->fetch_assoc())
+        {
+            $items[] = $this->convert($rec);
+        }
+        return $items;
+    }
+
+    public function getBy($column_name, $value)
+    {
+        $items = array();
+        $records = $this->getDb()->query("SELECT * FROM `$this->table_name` WHERE `$column_name` = '$value'");
+        while ($rec = $records->fetch_assoc())
+        {
+            $items[] = $this->convert($rec);
+        }
+        return $items;
+    }
+
+    public function getColumnBy($column, $value, $get_column)
+    {
+        $items = array();
+        $records = $this->getDb()->query("SELECT `$get_column` FROM `$this->table_name` WHERE `$column` = '$value'");
+        while ($rec = $records->fetch_assoc())
+        {
+            $items[] = $rec[$get_column];
+        }
+        return $items;
+    }
+
+    public function updateColumnBy($column, $value, $update_column, $update_value)
+    {
+        $this->getDb()->query("UPDATE `$this->table_name` 
+        SET `$update_column` = '$update_value' WHERE `$column` = '$value'");
+    }
+
+    public function deleteBy($column_name, $value)
+    {
+        $this->getDb()->query("DELETE FROM `$this->table_name` WHERE `$column_name` = '$value'");
     }
 
     public function getDb()
@@ -31,5 +74,15 @@ abstract class DBDao implements IDao
         {
             throw new InvalidArgumentException('db');
         }
+    }
+
+    public function getTableName()
+    {
+        return $this->table_name;
+    }
+
+    public function setTableName($table_name)
+    {
+        $this->table_name = $table_name;
     }
 }

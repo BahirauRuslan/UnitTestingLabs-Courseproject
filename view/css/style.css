@@ -1,0 +1,83 @@
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+a {
+    color: rgb(62, 82, 197);
+    text-decoration: none;
+}
+
+header {
+    height: 5vw;
+    background-color: rgb(62, 82, 197);
+    font-size: 3vw;
+    font-family: cursive;
+}
+
+header a { 
+    color: white;
+}
+
+.header_link {
+    text-align: center;
+}
+
+.controls_right {
+    margin-left: 68.6vw;
+    margin-top: -5vw;
+    height: 5vw;
+    width: 29.4vw;
+}
+
+.registration_link {
+    height: 5vw;
+    width: 19.4vw;
+}
+
+.autho_link {
+    margin-top: -5vw;
+    margin-left: 19.4vw;
+    height: 5vw;
+    width: 10vw;
+}
+
+#header_title {
+    height: 5vw;
+    width: 68.6vw;
+}
+
+#title_name {
+    margin-left: 2vw;
+    
+    height: 5vw;
+    width: 53.9vw;
+    text-align: left;
+}
+
+#basket {
+    margin-top: -5vw;
+    margin-left: 53.9vw;
+    height: 5vw;
+    width: 14.7vw;
+}
+
+footer {
+    margin-top: 5vw;
+    color: dimgrey;
+    text-align: center;
+}
+
+footer a {
+    color: dimgray;
+}
+
+.user_identify {
+    margin-top: 2vw;
+    text-align: left;
+    font-size: 1vw;
+    color: rgb(62, 82, 197);
+}
+
+input[type=text] {
+    border: 0.01vw solid blue;
+}

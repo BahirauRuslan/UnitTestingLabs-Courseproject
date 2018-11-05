@@ -1,0 +1,90 @@
+.categories_panel {
+    margin-top: 5vw;
+    margin-left: 10vw;
+    width: 80vw;
+    /*height: 80vw;*/
+    text-align: center;
+    font-size: 3vw;
+}
+
+.categories, .categories img, .pic_txt {
+    width: 20vw;
+    height: 20vw;
+}
+
+.pic_txt {
+    margin-top: -20vw; 
+}
+
+/*
+
+.small_categories {
+    position: relative;
+    width: 35vw;
+    height: 35vw;
+    margin-left: 45vw;
+}
+
+.small_sqr {
+    width: 15vw;
+    height: 15vw;
+    font-size: 5vw;
+}
+
+.small_sqr img {
+    width: 15vw;
+    height: 15vw;
+}
+
+.small_pic_txt {
+    margin-top: -15vw;
+    width: 15vw;
+    height: 15vw;
+}
+
+#small2 {
+    margin-left: 20vw;
+    margin-top: -15vw;
+}
+
+#small3 {
+    margin-top: 5vw;
+}
+
+#small4 {
+    margin-left: 20vw;
+    margin-top: -15vw;
+}
+
+.big_sqr {
+    position: relative;
+    width: 35vw;
+    height: 35vw;
+    font-size: 5vw;
+}
+
+.big_sqr img {
+    width: 35vw;
+    height: 35vw;
+}
+
+.big_pic_txt {
+    margin-top: -35vw;
+    width: 35vw;
+    height: 35vw;
+}
+
+#big1 {
+    margin-top: -35vw;
+}
+
+#big2 {
+    margin-top: 10vw;
+}
+
+#big3 {
+    margin-left: 45vw;
+    margin-top: -35vw;
+}
+
+*/

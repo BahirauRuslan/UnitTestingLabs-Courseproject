@@ -15,7 +15,8 @@ class CategoryDao extends IdentificationalDao
         if ($record instanceof Category)
         {
             $name = $record->getName();
-            $this->getDb()->query("INSERT INTO `categories` (`name`) 
+            $table_name = $this->getTableName();
+            $this->getDb()->query("INSERT INTO `$table_name` (`name`) 
             VALUES ('$name')");
         }
         else
@@ -30,7 +31,8 @@ class CategoryDao extends IdentificationalDao
         {
             $id = $record->getId();
             $name = $record->getName();
-            $this->getDb()->query("UPDATE `categories` SET `name` = '$name' WHERE `id` = '$id'");
+            $table_name = $this->getTableName();
+            $this->getDb()->query("UPDATE `$table_name` SET `name` = '$name' WHERE `id` = '$id'");
         }
         else
         {

@@ -1,6 +1,7 @@
 <?php
 
 require_once "IDao.php";
+require_once "ProductDao.php";
 require_once "D:\Workspace\UnitTesting\courseproject\model\\entity\CartRecord.php";
 
 class CartDao implements IDao
@@ -31,7 +32,10 @@ class CartDao implements IDao
             {
                 $prod_id = str_replace("product_id:", "", $key);
                 $prod_count = $_SESSION[$key];
-                // TODO: create cart records and add them to $records
+                require_once "D:\Workspace\UnitTesting\courseproject\model\util\connectDB.php";
+                $productDao = new ProductDao($mysqli);
+                $product =$productDao->getBy('id', $prod_id)[0];
+                $records[] = new CartRecord($product, $prod_count);
             }
         }
         return $records;

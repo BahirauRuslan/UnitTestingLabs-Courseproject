@@ -1,4 +1,4 @@
-<?php include "scripts/connectDB.php"; ?>
+<?php require_once "model/util/session.php"; ?>
 <!DOCTYPE html>
 <html>
 
@@ -12,23 +12,26 @@
 
     <body>
         <header>
-            <?php        
-            //unset($_SESSION["logged_user"]);
-            include "scripts/goToPage.php";
-            include "model/checking.php";
-            if (Checking::getChecking()->isAdmin()) {
+            <?php
+            require_once "model/util/utilFunc.php";
+            require_once "model/logic/FaceControl.php";
+            if (FaceControl::getFaceControl()->isAdmin()) {
                 gotoPage("admin.php");
-                //exit();
             } else {
                 include "view/header.html";
-                include Checking::getChecking()->getOneOf("view/authorizationControl.html", 
+                include FaceControl::getFaceControl()->getOneOf("view/authorizationControl.html",
                     "view/userControl.html");
             }
             ?>
         </header>
 
         <div class="categories_panel">
-            <?php include_once "view/createCategoriesTable.php"; ?>
+            <?php
+            require_once "view/CategoryView.php";
+            require_once "model/util/connectDB.php";
+            $view = new CategoryView();
+            $view->consumerView($mysqli);
+            ?>
         </div>
         
         <footer>

@@ -48,4 +48,4 @@ class CategoryDao extends IdentificationalDao
 
 //require_once "D:\Workspace\UnitTesting\courseproject\model\util\connectDB.php";
 //$dao = new CategoryDao($mysqli);
-//var_dump($dao->get);
+//var_dump($dao->getColumnBy('id', 7, 'picture_path'));

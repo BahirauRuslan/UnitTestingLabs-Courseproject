@@ -1,7 +1,9 @@
 <?php
-include "scripts/connectDB.php";
-include "scripts/goToPage.php";
-include "model/verifyer.php";
+require_once "model/util/session.php";
+require_once "model/util/connectDB.php";
+require_once "model/util/utilFunc.php";
+require_once "model/logic/RegistrationVerifyer.php";
+require_once "model/util/dao/UserDao.php";
 
 if (isset($_POST["do_registration"])) {
     $login = $_POST['login'];
@@ -9,18 +11,24 @@ if (isset($_POST["do_registration"])) {
     $password = $_POST['password'];
     $password2 = $_POST['password2'];
 
-    $error = Verifyer::getVerifyer()->registrationErrors($login, $email, $password, 
+    $errors_msg = array();
+    $errors_msg["incorrect_login"] = "Некорректный логин";
+    $errors_msg["incorrect_password"] = "Некорректный пароль";
+    $errors_msg["incorrect_email"] = "Некорректный адрес почты";
+    $errors_msg["double_login"] = "Пользователь с данным логином уже существует";
+    $errors_msg["double_email"] = "Пользователь с данной почтой уже существует";
+    $errors_msg["incorrect_repeat"] = "Неправильно повторен пароль";
+
+
+    $verifyer = new RegistrationVerifyer($errors_msg);
+    $error = $verifyer->registrationErrors($login, $email, $password,
         $password2, $mysqli);
     
     if (!$error) {
         $hash = password_hash($password, PASSWORD_DEFAULT);
-        $result = Requester::getRequester()->createUserRecord($mysqli, 
-            $login, $email, $hash);
-        if (!$result) {
-            echo "Извините, ваша запись по техническим причинам не была добавлена";
-        } else {
-            gotoPage("http://localhost:63342/pekar.by/index.php");
-        }
+        $dao = new UserDao($mysqli);
+        $dao->add(new User(0, $login, $email, $hash));
+        gotoPage("http://localhost:63342/courseproject/index.php");
     } else {
         echo $error . '</br>';
     }
@@ -38,7 +46,7 @@ if (isset($_POST["do_registration"])) {
     </head>
 
     <body>
-        <form action="registration.php" method="POST" class="user_identify">
+        <form action="" method="POST" class="user_identify">
             <p>Логин<br><input type="text" name="login"></p>
             <p>Почта<br><input type="text" name="email"></p>
             <p>Пароль<br><input type="password" name="password"></p>

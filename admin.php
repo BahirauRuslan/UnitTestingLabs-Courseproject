@@ -1,5 +1,5 @@
 <?php
-require_once "model/util/utilFunc.php";
+require_once "model/util/awayIfNotAdmin.php";
 ?>
 <!DOCTYPE html>
 <html>

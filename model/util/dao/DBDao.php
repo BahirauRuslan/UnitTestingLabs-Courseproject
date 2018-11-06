@@ -26,6 +26,31 @@ abstract class DBDao implements IDao
         return $items;
     }
 
+    public function getAllSearched($column, $pattern="%", $sort_column="", $desc=false)
+    {
+        $items = array();
+        if ($sort_column != "")
+        {
+            $records = $this->getDb()->query("SELECT * FROM `$this->table_name` WHERE `$column` LIKE '$pattern'");
+        }
+        else if ($desc)
+        {
+            $records = $this->getDb()->query("SELECT * FROM `$this->table_name` WHERE `$column` LIKE '$pattern'
+                  ORDER BY `$sort_column` DESC");
+        }
+        else
+        {
+            $records = $this->getDb()->query("SELECT * FROM `$this->table_name` WHERE `$column` LIKE '$pattern'
+                  ORDER BY `$sort_column`");
+        }
+
+        while ($rec = $records->fetch_assoc())
+        {
+            $items[] = $this->convert($rec);
+        }
+        return $items;
+    }
+
     public function getBy($column_name, $value)
     {
         $items = array();

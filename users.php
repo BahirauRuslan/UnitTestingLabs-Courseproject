@@ -1,4 +1,4 @@
-<?php include "scripts/awayIfNotAdmin.php"; ?>
+<?php include "model/util/awayIfNotAdmin.php"; ?>
 <!DOCTYPE html>
 <html>
 
@@ -17,7 +17,13 @@
         </form>
 
         <div class="users_list">
-            <?php include "view\createUsersTable.php" ?>
+            <?php
+            require_once "view\UserView.php";
+            require_once "model/util/connectDB.php";
+            $view = new UserView();
+            $pattern = (isset($_GET["user_login"])) ? "%" . $_GET["user_login"] . "%" : "%";
+            $view->adminView($mysqli, $pattern);
+            ?>
         </div>        
     </body>
 

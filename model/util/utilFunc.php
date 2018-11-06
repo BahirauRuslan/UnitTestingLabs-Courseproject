@@ -1,6 +1,6 @@
 <?php
 
-require_once "connectDB.php";
+require_once "session.php";
 
 function gotoPage($url)
 {
@@ -10,5 +10,5 @@ function gotoPage($url)
 function logout()
 {
     unset($_SESSION["logged_user"]);
-    gotoPage('http://localhost:63342/courseProject/index.php');
+    gotoPage('http://localhost:63342/courseproject/index.php');
 }

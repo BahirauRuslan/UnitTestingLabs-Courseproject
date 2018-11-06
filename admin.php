@@ -1,4 +1,6 @@
-<?php include "scripts/awayIfNotAdmin.php"; ?>
+<?php
+require_once "model/util/utilFunc.php";
+?>
 <!DOCTYPE html>
 <html>
 
@@ -19,7 +21,7 @@
             <a href="addCategories.php">Добавить категорию</a></br>
             <a href="categories.php">Удалить категорию</a></br>
             <a href="history.php">История заказов</a></br>
-            <a href="scripts/logout.php">Выйти</a>
+            <a href="model/util/logout.php">Выйти</a>
         </div>
     </body>
 

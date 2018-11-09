@@ -13,7 +13,8 @@ class CategoryView
         {
             $id = $category->getId();
             $name = $category->getName();
-            $picture = $dao->getColumnBy('id', $id, 'picture_path')[0];
+            require_once "paths.php";
+            $picture = $PIC_CATEGORIES_PATH . $dao->getColumnBy('id', $id, 'picture_path')[0];
             $blocks = "";
             if ($name_left)
             {

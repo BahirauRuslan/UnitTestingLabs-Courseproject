@@ -3,6 +3,7 @@ require_once "model/logic/CategoryVerifyer.php";
 require_once "model/util/connectDB.php";
 require_once "model/util/dao/CategoryDao.php";
 require_once "model/util/awayIfNotAdmin.php";
+require_once "model/util/utilFunc.php";
 require_once "view/paths.php";
 
 if (isset($_POST["add_category"]))
@@ -27,12 +28,14 @@ if (isset($_POST["add_category"]))
             $dao = new CategoryDao($mysqli);
             $dao->add(new Category(0, $name));
             $dao->updateColumnBy("name", $name, "picture_path", $pic);
+            gotoPage("http://localhost:63342/courseproject/index.php");
         }
-    } else if (!$error && isset($_FILES["upload"])) {
+    } else if (!$error && isset($_FILES["upload"]) && $_FILES["upload"]["name"] != "" ) {
         echo "Данный тип файла не поддерживается";
     } else if (!$error) {
         $dao = new CategoryDao($mysqli);
         $dao->add(new Category(0, $name));
+        gotoPage("http://localhost:63342/courseproject/index.php");
     } else {
         echo $error . '</br>';
     }

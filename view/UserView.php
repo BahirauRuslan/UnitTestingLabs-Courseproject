@@ -12,11 +12,15 @@ class UserView
         {
             $id = $user->getId();
             $login = $user->getLogin();
-            echo "<div>
+            echo "<div class='item'>
                     <div>$login</div>
-                    <div></div>
-                    <div></div>
+                    <div><a href='userHistory.php?user=$id'>История заказов</a></div>
+                    <div><a href='?delete_user=$id'>Удалить</a></div>
                   </div>";
+        }
+        if (count($users) == 0)
+        {
+            echo "<p>Пользователей с таким логином не найдено</p>";
         }
     }
 }

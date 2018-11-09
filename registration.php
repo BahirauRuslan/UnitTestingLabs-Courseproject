@@ -12,12 +12,12 @@ if (isset($_POST["do_registration"])) {
     $password2 = $_POST['password2'];
 
     $errors_msg = array();
-    $errors_msg["incorrect_login"] = "Некорректный логин";
-    $errors_msg["incorrect_password"] = "Некорректный пароль";
-    $errors_msg["incorrect_email"] = "Некорректный адрес почты";
-    $errors_msg["double_login"] = "Пользователь с данным логином уже существует";
+    $errors_msg["incorrect_login"] = "Некорректно введен логин";
+    $errors_msg["incorrect_password"] = "Некорректно введен пароль";
+    $errors_msg["incorrect_email"] = "Некорректно введен email";
+    $errors_msg["double_login"] = "Данный логин уже занят";
     $errors_msg["double_email"] = "Пользователь с данной почтой уже существует";
-    $errors_msg["incorrect_repeat"] = "Неправильно повторен пароль";
+    $errors_msg["incorrect_repeat"] = "Неверно подтвержден пароль";
 
 
     $verifyer = new RegistrationVerifyer($errors_msg);

@@ -1,4 +1,13 @@
-<?php include "model/util/awayIfNotAdmin.php"; ?>
+<?php
+    include "model/util/awayIfNotAdmin.php";
+    if (isset($_GET["delete_user"]))
+    {
+        require_once "model/util/connectDB.php";
+        require_once "model/util/dao/UserDao.php";
+        $dao = new UserDao($mysqli);
+        $dao->deleteBy('id', $_GET["delete_user"]);
+    }
+    ?>
 <!DOCTYPE html>
 <html>
 

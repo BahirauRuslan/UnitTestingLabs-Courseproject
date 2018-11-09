@@ -10,10 +10,12 @@ require_once "model/util/awayIfNotAdmin.php";
         <link rel="shortcut icon" href="view/pictures/main.ico" type="image/x-icon">
         <link href="view/css/style.css" rel="stylesheet" type="text/css"/>
         <link href="view/css/categories.css" rel="stylesheet" type="text/css"/>
+        <link href="view/css/admin.css" rel="stylesheet" type="text/css"/>
     </head>
 
     <body>
         <div class="admin_menu">
+            <h2>Администратор</h2>
             <a href="users.php">Список пользователей</a></br>
             <a href="orders.php">Список заказов</a></br>
             <a href="goods.php">Список товаров</a></br>

@@ -38,8 +38,9 @@ if (isset($_POST['do_login'])) {
     </head>
     <body>
         <form action="authentication.php" method="POST" class="user_identify">
-            <p>Логин: <input type="text" name="login"></p>
-            <p>Пароль: <input type="password" name="password"></p>
+            <h2>Вход</h2>
+            <p>Логин<br><input type="text" name="login"></p>
+            <p>Пароль<br><input type="password" name="password"></p>
             <button type="submit" name="do_login">Войти</button>
         </form>
     </body>

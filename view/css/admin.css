@@ -1,0 +1,13 @@
+.admin_menu {
+    margin-top: 2.5vw;
+    width: 26vw;
+    margin-left: 37vw;
+    text-align: center;
+    color: rgb(62, 82, 197);
+    border: 0.9vw solid blue;
+    border-radius: 0.5vw;
+}
+
+.admin_menu a {
+    font-size: 2vw;
+}

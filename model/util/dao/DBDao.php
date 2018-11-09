@@ -29,7 +29,7 @@ abstract class DBDao implements IDao
     public function getAllSearched($column, $pattern="%", $sort_column="", $desc=false)
     {
         $items = array();
-        if ($sort_column != "")
+        if ($sort_column == "")
         {
             $records = $this->getDb()->query("SELECT * FROM `$this->table_name` WHERE `$column` LIKE '$pattern'");
         }

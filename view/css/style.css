@@ -72,12 +72,19 @@ footer a {
 }
 
 .user_identify {
-    margin-top: 2vw;
+    margin-top: 2.5vw;
+    margin-left: 43vw;
+    width: 14vw;
     text-align: left;
     font-size: 1vw;
     color: rgb(62, 82, 197);
 }
 
-input[type=text] {
+.user_identify h2 {
+    text-align: center;
+}
+
+input {
+    width: 14vw;
     border: 0.01vw solid blue;
 }

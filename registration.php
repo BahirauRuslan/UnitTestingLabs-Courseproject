@@ -47,6 +47,7 @@ if (isset($_POST["do_registration"])) {
 
     <body>
         <form action="" method="POST" class="user_identify">
+            <h2>Регистрация</h2>
             <p>Логин<br><input type="text" name="login"></p>
             <p>Почта<br><input type="text" name="email"></p>
             <p>Пароль<br><input type="password" name="password"></p>

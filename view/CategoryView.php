@@ -33,4 +33,19 @@ class CategoryView
                   </div>";
         }
     }
+
+    public function adminView($db)
+    {
+        $dao = new CategoryDao($db);
+        $categories = $dao->getAll();
+        foreach ($categories as $category)
+        {
+            $id = $category->getId();
+            $name = $category->getName();
+            echo "<div class='item'>
+                    <div>$name</div>
+                    <div><a href='?delete_category=$id'>Удалить</a></div>
+                  </div>";
+        }
+    }
 }

@@ -49,4 +49,18 @@ class CategoryView
                   </div>";
         }
     }
+
+    public function adminSelectView($db)
+    {
+        $dao = new CategoryDao($db);
+        $categories = $dao->getAll();
+        foreach ($categories as $category)
+        {
+            $id = $category->getId();
+            $name = $category->getName();
+            echo "<div class='item'>
+                    <div><a href='goodSet.php?category=$id'>$name</a></div>
+                  </div>";
+        }
+    }
 }

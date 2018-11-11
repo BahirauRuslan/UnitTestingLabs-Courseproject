@@ -4,7 +4,11 @@ if (isset($_GET["delete_category"]))
 {
     require_once "model/util/connectDB.php";
     require_once "model/util/dao/CategoryDao.php";
+    require_once "view/paths.php";
     $dao = new CategoryDao($mysqli);
+    $path = __DIR__ . "\\" . $PIC_CATEGORIES_PATH
+        . $dao->getColumnBy('id', $_GET["delete_category"], "picture_path")[0];
+    unlink($path);
     $dao->deleteBy('id', $_GET["delete_category"]);
 }
 ?>

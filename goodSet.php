@@ -40,7 +40,7 @@ if (isset($_POST["set_product"]))
         } else {
             $id = $_GET["product"];
             $dao = new ProductDao($mysqli);
-            $product = $dao->getBy("id", $id);
+            $product = $dao->getBy("id", $id)[0];
             $product->setName($name);
             $product->setPrice($price);
             $product->setDescription($description);

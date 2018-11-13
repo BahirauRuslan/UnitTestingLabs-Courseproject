@@ -7,7 +7,7 @@ a {
     text-decoration: none;
 }
 
-header {
+#header_title, .controls_right {
     height: 5vw;
     background-color: rgb(62, 82, 197);
     font-size: 3vw;

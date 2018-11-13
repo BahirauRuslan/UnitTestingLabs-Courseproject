@@ -1,15 +1,46 @@
 <?php
 require_once "model/logic/FaceControl.php";
-if (isset($_GET["delete_product"]) && FaceControl::getFaceControl()->isAdmin())
+require_once "model/logic/URIResolver.php";
+require_once "model/util/utilFunc.php";
+$uriRes = URIResolver::getURIResolver();
+if ($uriRes->hasGET("delete_product") && FaceControl::getFaceControl()->isAdmin())
 {
     require_once "model/util/connectDB.php";
     require_once "model/util/dao/ProductDao.php";
     require_once "view/paths.php";
     $dao = new ProductDao($mysqli);
-    $path = __DIR__ . "\\" . $PIC_PRODUCTS_PATH
-        . $dao->getColumnBy('id', $_GET["delete_product"], "picture_path")[0];
-    unlink($path);
-    $dao->deleteBy('id', $_GET["delete_product"]);
+    if (isset($dao->getColumnBy('id',
+            $uriRes->getValue("delete_product"), "picture_path")[0]))
+    {
+        $path = __DIR__ . "\\" . $PIC_PRODUCTS_PATH
+            . $dao->getColumnBy('id',
+                $uriRes->getValue("delete_product"), "picture_path")[0];
+        unlink($path);
+    }
+    $dao->deleteBy('id', $uriRes->getValue("delete_product"));
+}
+
+if ($uriRes->hasGET("add_product"))
+{
+    require_once "model/util/dao/CartDao.php";
+    require_once "model/util/dao/ProductDao.php";
+    $dao = new CartDao();
+    $id = $uriRes->getValue("add_product");
+    if (isset($dao->getBy($id)[0]))
+    {
+        $record = $dao->getBy($id)[0];
+        $record->setCount($record->getCount() + 1);
+        $dao->update(array($record));
+    }
+    else
+    {
+        require_once "model/util/connectDB.php";
+        $daoProd = new ProductDao($mysqli);
+        if (isset($daoProd->getBy('id', $id)[0])) {
+            $dao->add(array(new CartRecord($daoProd->getBy('id', $id)[0], 1)));
+        }
+    }
+    gotoPage($uriRes->unsetFromURI($_SERVER['REQUEST_URI'], 'add_product'));
 }
 ?>
 <!DOCTYPE html>
@@ -25,15 +56,38 @@ if (isset($_GET["delete_product"]) && FaceControl::getFaceControl()->isAdmin())
     </head>
 
     <body>
+        <header>
+            <?php
+            if (!FaceControl::getFaceControl()->isAdmin())
+            {
+                include "view/header.html";
+                include FaceControl::getFaceControl()->getOneOf("view/authorizationControl.html",
+                    "view/userControl.html");
+            }
+            ?>
+        </header>
         <div class="product_panel">
             <form class="search">
                 <input type="search" name="product_name" placeholder="Поиск товара">
                 <input type="submit" value="найти">
             </form>
-            <a href="?sort_by=name&desc=
-            <?php echo (isset($_GET['desc'])) ? !$_GET['desc'] : 'false' ?>">По названию</a>
-            <a href="?sort_by=price&desc=
-            <?php echo (isset($_GET['desc'])) ? !$_GET['desc'] : 'false' ?>">По цене</a>
+            <a href="
+                <?php
+                    $uri = $uriRes->setToURI($uriRes->getOnlyValues($_SERVER['REQUEST_URI']),
+                        'sort_by', 'name');
+                    $desc = ($uriRes->hasGET('desc')) ? !$uriRes->getValue('desc') : false;
+                    $uri = $uriRes->setToURI($uri, 'desc', $desc);
+                    echo $uri;
+                ?>">По названию</a>
+
+            <a href="
+                <?php
+                    $uri = $uriRes->setToURI($uriRes->getOnlyValues($_SERVER['REQUEST_URI']),
+                        'sort_by', 'price');
+                    $desc = ($uriRes->hasGET('desc')) ? !$uriRes->getValue('desc') : false;
+                    $uri = $uriRes->setToURI($uri, 'desc', $desc);
+                    echo $uri;
+                ?>">По цене</a>
             <?php
                 require_once "view/ProductView.php";
                 require_once "model/util/connectDB.php";

@@ -1,6 +1,7 @@
 <?php
 
 require_once "D:\Workspace\UnitTesting\courseproject\model\util\dao\UserDao.php";
+require_once "D:\Workspace\UnitTesting\courseproject\model\logic\URIResolver.php";
 
 class UserView
 {
@@ -12,10 +13,13 @@ class UserView
         {
             $id = $user->getId();
             $login = $user->getLogin();
+            $uriRes = URIResolver::getURIResolver();
+            $history_link = $uriRes->setToURI('userHistory.php', 'user', $id);
+            $delete_link = $uriRes->setToURI('', 'delete_user', $id);
             echo "<div class='item'>
                     <div>$login</div>
-                    <div><a href='userHistory.php?user=$id'>История заказов</a></div>
-                    <div><a href='?delete_user=$id'>Удалить</a></div>
+                    <div><a href=$history_link>История заказов</a></div>
+                    <div><a href=$delete_link>Удалить</a></div>
                   </div>";
         }
         if (count($users) == 0)

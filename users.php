@@ -1,11 +1,15 @@
 <?php
-    include "model/util/awayIfNotAdmin.php";
-    if (isset($_GET["delete_user"]))
+    require_once "model/util/awayIfNotAdmin.php";
+    require_once "model/logic/URIResolver.php";
+    require_once "model/util/utilFunc.php";
+    $uriRes = URIResolver::getURIResolver();
+    if ($uriRes->hasGET('delete_user'))
     {
         require_once "model/util/connectDB.php";
         require_once "model/util/dao/UserDao.php";
         $dao = new UserDao($mysqli);
-        $dao->deleteBy('id', $_GET["delete_user"]);
+        $dao->deleteBy('id', $uriRes->getValue('delete_user'));
+        gotoPage($uriRes->clearURI($_SERVER['REQUEST_URI']));
     }
     ?>
 <!DOCTYPE html>
@@ -30,7 +34,7 @@
             require_once "view/UserView.php";
             require_once "model/util/connectDB.php";
             $view = new UserView();
-            $pattern = (isset($_GET["user_login"])) ? "%" . $_GET["user_login"] . "%" : "%";
+            $pattern = ($uriRes->hasGET('user_login')) ? "%" . $uriRes->getValue('user_login') . "%" : "%";/*(isset($_GET["user_login"])) ? "%" . $_GET["user_login"] . "%" : "%";*/
             $view->adminView($mysqli, $pattern);
             ?>
         </div>        

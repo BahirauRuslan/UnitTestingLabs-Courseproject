@@ -7,11 +7,16 @@
     margin-top: 2.5vw;
     width: 60vw;
     height: 20vw;
+    border: 0.1vw solid rgb(222, 211, 220);
+    border-radius: 0.1vw;
+}
+
+.product_pic, .product img {
+    width: 15vw;
+    height: 15vw;
 }
 
 .product_pic {
-    width: 15vw;
-    height: 15vw;
     margin-left: 5vw;
     margin-top: 2.5vw;
 }
@@ -19,7 +24,8 @@
 .info_block {
     width: 30vw;
     height: 15vw;
-    margin-left: 5vw;
+    text-align: right;
+    margin-left: 25vw;
     margin-top: -15vw;
 }
 
@@ -33,6 +39,5 @@
 }
 
 .price_block {
-    text-align: right;
     font-size: 3vw;
 }

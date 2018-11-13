@@ -41,6 +41,12 @@ class CartDao implements IDao
         return $records;
     }
 
+    public function getBy($id)
+    {
+        $key = "product_id" . $id;
+        return (isset($_SESSION[$key])) ? $_SESSION[$key] : false;
+    }
+
     public function update($record)
     {
         $this->add($record);

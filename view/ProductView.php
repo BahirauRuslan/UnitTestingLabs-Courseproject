@@ -5,6 +5,25 @@ require_once "D:\Workspace\UnitTesting\courseproject\model\logic\URIResolver.php
 
 class ProductView
 {
+    public function viewPage($db, $id, $isAdmin) {
+        $dao = new ProductDao($db);
+        $product = $dao->getBy('id', $id)[0];
+        require "paths.php";
+        $picture = $PIC_PRODUCTS_PATH
+            . $dao->getColumnBy('id', $id, 'picture_path')[0];
+        $name = $product->getName();
+        $price = $product->getPrice();
+        $description = $product->getDescription();
+        $uriRes = URIResolver::getURIResolver();
+        $add_link = $uriRes->setToURI($uriRes->getOnlyValues($_SERVER['REQUEST_URI']),
+            'add_product', $id);
+        $add_div = ($isAdmin) ? "" : "<div><a href='$add_link'>Добавить в корзину</a></div>";
+        echo "<div><img src='$picture'></div>
+              <div>$name</div>
+              <div>$price</div>
+              <div>$description</div>" . $add_div;
+    }
+
     public function viewGoods($db, $pattern, $sort_column, $desc)
     {
         $dao = new ProductDao($db);
@@ -40,12 +59,14 @@ class ProductView
 
     public function viewGoodsByCategory($db, $pattern, $sort_column, $desc, $category_id)
     {
+        $count = 0;
         $dao = new ProductDao($db);
         $goods = $dao->getAllSearched('name', $pattern, $sort_column, $desc);
         $uriRes = URIResolver::getURIResolver();
         foreach ($goods as $product)
         {
             if ($product->getCategory()->getId() == $category_id) {
+                $count++;
                 $id = $product->getId();
                 $name = $product->getName();
                 $price = $product->getPrice();
@@ -63,7 +84,7 @@ class ProductView
                   </div>";
             }
         }
-        if (count($goods) == 0)
+        if ($count == 0)
         {
             echo "<p>Товаров с таким названием не найдено</p>";
         }

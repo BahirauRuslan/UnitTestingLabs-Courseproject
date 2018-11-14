@@ -16,8 +16,8 @@ class HistoryRecordDao
     {
         $productDao = new ProductDao($this->getDb());
         $userDao = new UserDao($this->getDb());
-        $user = $userDao->getBy('id', rec['user_id'])[0];
-        $product = $productDao->getBy('id', rec['product_id'])[0];
+        $user = $userDao->getBy('id', $rec['user_id'])[0];
+        $product = $productDao->getBy('id', $rec['product_id'])[0];
         return new HistoryRecord($rec['id'], $user, $product,
             $rec['count'], $rec['address'], $rec['phone'], $rec['order_date'], $rec['confirm_date']);
     }

@@ -18,17 +18,19 @@ if ($uriRes->hasGET("delete_product") && FaceControl::getFaceControl()->isAdmin(
         unlink($path);
     }
     $dao->deleteBy('id', $uriRes->getValue("delete_product"));
+    gotoPage($uriRes->unsetFromURI($_SERVER['REQUEST_URI'], 'delete_product'));
 }
 
 if ($uriRes->hasGET("add_product"))
 {
     require_once "model/util/dao/CartDao.php";
     require_once "model/util/dao/ProductDao.php";
+    require_once "model/util/session.php";
     $dao = new CartDao();
     $id = $uriRes->getValue("add_product");
-    if (isset($dao->getBy($id)[0]))
+    if ($dao->getBy($id))
     {
-        $record = $dao->getBy($id)[0];
+        $record = $dao->getBy($id);
         $record->setCount($record->getCount() + 1);
         $dao->update(array($record));
     }
@@ -48,7 +50,7 @@ if ($uriRes->hasGET("add_product"))
 
     <head>
         <meta charset="UTF-8"/>
-        <title>Пользователи</title>
+        <title>Товары</title>
         <link rel="shortcut icon" href="view/pictures/main.ico" type="image/x-icon">
         <link href="view/css/style.css" rel="stylesheet" type="text/css"/>
         <link href="view/css/categories.css" rel="stylesheet" type="text/css"/>

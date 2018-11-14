@@ -26,13 +26,13 @@ class CartDao implements IDao
     public function getAll()
     {
         $records = array();
-        foreach ($_SESSION as $key)
+        foreach (array_keys($_SESSION) as $key)
         {
             if (substr_count($key, "product_id:") == 1)
             {
                 $prod_id = str_replace("product_id:", "", $key);
                 $prod_count = $_SESSION[$key];
-                require_once "D:\Workspace\UnitTesting\courseproject\model\util\connectDB.php";
+                require "D:\Workspace\UnitTesting\courseproject\model\util\connectDB.php";
                 $productDao = new ProductDao($mysqli);
                 $product =$productDao->getBy('id', $prod_id)[0];
                 $records[] = new CartRecord($product, $prod_count);
@@ -43,8 +43,15 @@ class CartDao implements IDao
 
     public function getBy($id)
     {
-        $key = "product_id" . $id;
-        return (isset($_SESSION[$key])) ? $_SESSION[$key] : false;
+        $key = "product_id:" . $id;
+        if (isset($_SESSION[$key])) {
+            $prod_count = $_SESSION[$key];
+            require "D:\Workspace\UnitTesting\courseproject\model\util\connectDB.php";
+            $productDao = new ProductDao($mysqli);
+            $product = $productDao->getBy('id', $id)[0];
+            return new CartRecord($product, $prod_count);
+        }
+        return false;
     }
 
     public function update($record)
@@ -57,6 +64,13 @@ class CartDao implements IDao
         if ($record instanceof CartRecord)
         {
             unset($_SESSION["product_id:" . $record->getProduct()->getId()]);
+        }
+    }
+
+    public function deleteById($id)
+    {
+        if (isset($_SESSION["product_id:" . $id])) {
+            unset($_SESSION["product_id:" . $id]);
         }
     }
 }

@@ -16,8 +16,8 @@ class OrderRecordDao extends IdentificationalDao
     {
         $productDao = new ProductDao($this->getDb());
         $userDao = new UserDao($this->getDb());
-        $user = $userDao->getBy('id', rec['user_id'])[0];
-        $product = $productDao->getBy('id', rec['product_id'])[0];
+        $user = ($rec['user_id'] == null) ? null : $userDao->getBy('id', $rec['user_id'])[0];
+        $product = $productDao->getBy('id', $rec['product_id'])[0];
         return new OrderRecord($rec['id'], $user, $product,
             $rec['count'], $rec['address'], $rec['phone'], $rec['order_date']);
     }
@@ -26,7 +26,7 @@ class OrderRecordDao extends IdentificationalDao
     {
         if ($record instanceof OrderRecord)
         {
-            $user_id = $record->getUser()->getId();
+            $user_id = ($record->getUser() == null) ? null : $record->getUser()->getId();
             $product_id = $record->getProduct()->getId();
             $count = $record->getCount();
             $address = $record->getAddress();
@@ -48,7 +48,7 @@ class OrderRecordDao extends IdentificationalDao
         if ($record instanceof OrderRecord)
         {
             $id = $record->getId();
-            $user_id = $record->getUser()->getId();
+            $user_id = ($record->getUser() == null) ? null : $record->getUser()->getId();
             $product_id = $record->getProduct()->getId();
             $count = $record->getCount();
             $address = $record->getAddress();

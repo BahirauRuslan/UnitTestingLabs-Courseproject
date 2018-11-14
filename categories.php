@@ -17,7 +17,7 @@ if (isset($_GET["delete_category"]))
 
 <head>
     <meta charset="UTF-8"/>
-    <title>Пользователи</title>
+    <title>Категории</title>
     <link rel="shortcut icon" href="view/pictures/main.ico" type="image/x-icon">
     <link href="view/css/style.css" rel="stylesheet" type="text/css"/>
     <link href="view/css/categories.css" rel="stylesheet" type="text/css"/>

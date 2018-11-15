@@ -5,7 +5,7 @@ require_once "UserDao.php";
 require_once "ProductDao.php";
 require_once "D:\Workspace\UnitTesting\courseproject\model\\entity\HistoryRecord.php";
 
-class HistoryRecordDao
+class HistoryRecordDao extends IdentificationalDao
 {
     public function __construct($db)
     {
@@ -16,7 +16,7 @@ class HistoryRecordDao
     {
         $productDao = new ProductDao($this->getDb());
         $userDao = new UserDao($this->getDb());
-        $user = $userDao->getBy('id', $rec['user_id'])[0];
+        $user = ($rec['user_id'] == 0) ? 0 : $userDao->getBy('id', $rec['user_id'])[0];
         $product = $productDao->getBy('id', $rec['product_id'])[0];
         return new HistoryRecord($rec['id'], $user, $product,
             $rec['count'], $rec['address'], $rec['phone'], $rec['order_date'], $rec['confirm_date']);
@@ -26,7 +26,7 @@ class HistoryRecordDao
     {
         if ($record instanceof HistoryRecord)
         {
-            $user_id = $record->getUser()->getId();
+            $user_id = ($record->getUser() == null) ? null : $record->getUser()->getId();
             $product_id = $record->getProduct()->getId();
             $count = $record->getCount();
             $address = $record->getAddress();
@@ -49,7 +49,7 @@ class HistoryRecordDao
         if ($record instanceof HistoryRecord)
         {
             $id = $record->getId();
-            $user_id = $record->getUser()->getId();
+            $user_id = ($record->getUser() == null) ? null : $record->getUser()->getId();
             $product_id = $record->getProduct()->getId();
             $count = $record->getCount();
             $address = $record->getAddress();

@@ -16,7 +16,7 @@ class OrderRecordDao extends IdentificationalDao
     {
         $productDao = new ProductDao($this->getDb());
         $userDao = new UserDao($this->getDb());
-        $user = ($rec['user_id'] == null) ? null : $userDao->getBy('id', $rec['user_id'])[0];
+        $user = ($rec['user_id'] == 0) ? 0 : $userDao->getBy('id', $rec['user_id'])[0];
         $product = $productDao->getBy('id', $rec['product_id'])[0];
         return new OrderRecord($rec['id'], $user, $product,
             $rec['count'], $rec['address'], $rec['phone'], $rec['order_date']);

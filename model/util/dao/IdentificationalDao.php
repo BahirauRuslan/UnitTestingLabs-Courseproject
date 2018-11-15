@@ -13,7 +13,7 @@ abstract class IdentificationalDao extends DBDao
 
     public function delete($record)
     {
-        if ($record instanceof Category)
+        if ($record instanceof Identificational)
         {
             $id = $record->getId();
             $table_name = $this->getTableName();

@@ -1,0 +1,43 @@
+.product_panel {
+    margin-left: 20vw;
+    width: 60vw;
+}
+
+.product {
+    margin-top: 2.5vw;
+    width: 60vw;
+    height: 20vw;
+    border: 0.1vw solid rgb(222, 211, 220);
+    border-radius: 0.1vw;
+}
+
+.product_pic, .product img {
+    width: 15vw;
+    height: 15vw;
+}
+
+.product_pic {
+    margin-left: 5vw;
+    margin-top: 2.5vw;
+}
+
+.info_block {
+    width: 30vw;
+    height: 15vw;
+    text-align: right;
+    margin-left: 25vw;
+    margin-top: -15vw;
+}
+
+.name_block, .price_block, .control_block {
+    width: 30vw;
+    height: 5vw;
+}
+
+.name_block {
+    font-size: 2vw;
+}
+
+.price_block {
+    font-size: 3vw;
+}

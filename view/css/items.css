@@ -1,0 +1,10 @@
+.list {
+    margin-left: 20vw;
+    width: 60vw;
+}
+
+.item {
+    width: 60vw;
+    height: 1.5vw;
+    font-size: 1.5vw;
+}

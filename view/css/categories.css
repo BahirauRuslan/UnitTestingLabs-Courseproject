@@ -1,0 +1,33 @@
+.categories_panel {
+    margin-left: 20vw;
+    width: 60vw;
+}
+
+.category img {
+    width: 30vw;
+    height: 30vw;
+}
+
+.category {
+    margin-top: 2.5vw;
+    width: 60vw;
+    height: 30vw;
+}
+
+.category_txt {
+    width: 30vw;
+    height: 3vw;
+    margin-top: 12vw;
+    text-align: center;
+    font-size: 3vw;
+}
+
+.right_block {
+    margin-left: 30vw;
+    margin-top: -30vw;
+}
+
+.category_fill {
+    width: 30vw;
+    height: 15vw;
+}

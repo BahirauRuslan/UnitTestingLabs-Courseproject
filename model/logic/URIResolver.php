@@ -75,7 +75,8 @@ class URIResolver
         return substr($uri, strripos($uri, '?'));
     }
 
-    public function unsetFromURI($uri, $name) {
+    public function unsetFromURI($uri, $name)
+    {
         $valuess = substr($uri, strripos($uri, '?') + 1);
         $values = explode('&', $valuess);
         $valname = "";
@@ -85,7 +86,7 @@ class URIResolver
             }
         }
         if (strripos($valuess, $valname) === 0 && strripos($valuess, "&")) {
-            return str_replace($valname, '', $uri);
+            return str_replace($valname . '&', '', $uri);
         } else if (strripos($valuess, $valname) === 0) {
             return str_replace('?' . $valname, '', $uri);
         } else {

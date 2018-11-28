@@ -1,6 +1,6 @@
 <?php
 
-require_once "D:\Workspace\UnitTesting\courseproject\model\util\dao\ProductDao.php";
+require_once __DIR__ . '\..\util\dao\ProductDao.php'; //"D:\Workspace\UnitTesting\courseproject\model\util\dao\ProductDao.php";
 
 class ProductVerifyer
 {

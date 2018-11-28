@@ -1,6 +1,6 @@
 <?php
 
-require_once "D:\Workspace\UnitTesting\courseproject\model\logic\Cashier.php";
+require_once __DIR__ . '\..\..\..\model\logic\Cashier.php';
 
 class CashierTest extends PHPUnit_Framework_TestCase
 {

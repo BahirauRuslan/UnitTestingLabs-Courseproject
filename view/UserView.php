@@ -17,9 +17,10 @@ class UserView
             $history_link = $uriRes->setToURI('userHistory.php', 'user', $id);
             $delete_link = $uriRes->setToURI('', 'delete_user', $id);
             echo "<div class='item'>
-                    <div>$login</div>
-                    <div><a href=$history_link>История заказов</a></div>
-                    <div><a href=$delete_link>Удалить</a></div>
+                    <div class='item_txt'>$login</div>
+                    <div class='item_control'>
+                        <a href=$history_link>История заказов    </a><a href=$delete_link>Удалить</a>
+                    </div>
                   </div>";
         }
         if (count($users) == 0)

@@ -85,9 +85,9 @@ if (isset($_POST["set_product"]))
     <body>
         <form action="" method="POST" class="user_identify" enctype="multipart/form-data">
             <h2>Товар</h2>
-            <p>Название товара<br><input type="text" name="name"></p>
-            <p>Цена товара<br><input type="text" name="price"></p>
-            <p>Описание<br><input type="text" name="description"></p>
+            <p>Название товара<br><input type="text" name="name" autocomplete="off"></p>
+            <p>Цена товара<br><input type="text" name="price" autocomplete="off"></p>
+            <p>Описание<br><input type="text" name="description" autocomplete="off"></p>
             <p>Изображение<br><input type="file" name="upload" accept="image/jpeg"></p>
             <button type="submit" name="set_product">Подтвердить</button>
         </form>

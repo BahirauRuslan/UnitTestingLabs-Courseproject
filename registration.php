@@ -48,8 +48,8 @@ if (isset($_POST["do_registration"])) {
     <body>
         <form action="" method="POST" class="user_identify">
             <h2>Регистрация</h2>
-            <p>Логин<br><input type="text" name="login"></p>
-            <p>Почта<br><input type="text" name="email"></p>
+            <p>Логин<br><input type="text" name="login" autocomplete="off"></p>
+            <p>Почта<br><input type="text" name="email" autocomplete="off"></p>
             <p>Пароль<br><input type="password" name="password"></p>
             <p>Подтверждение пароля<br><input type="password" name="password2"></p>
             <button type="submit" name="do_registration">Зарегистрироваться</button>

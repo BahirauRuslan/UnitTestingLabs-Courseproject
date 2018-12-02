@@ -44,8 +44,8 @@ class CategoryView
             $id = $category->getId();
             $name = $category->getName();
             echo "<div class='item'>
-                    <div>$name</div>
-                    <div><a href='?delete_category=$id'>Удалить</a></div>
+                    <div class='item_txt'>$name</div>
+                    <div class='item_control'><a href='?delete_category=$id'>Удалить</a></div>
                   </div>";
         }
     }
@@ -58,9 +58,9 @@ class CategoryView
         {
             $id = $category->getId();
             $name = $category->getName();
-            echo "<div class='item'>
+            echo "
                     <div><a href='goodSet.php?category=$id'>$name</a></div>
-                  </div>";
+                  ";
         }
     }
 }

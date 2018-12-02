@@ -56,7 +56,7 @@ if (isset($_POST["add_category"]))
 <body>
     <form action="" method="POST" class="user_identify" enctype="multipart/form-data">
         <h2>Новая категория</h2>
-        <p>Название<br><input type="text" name="name"></p>
+        <p>Название<br><input type="text" name="name" autocomplete="off"></p>
         <p>Изображение<br><input type="file" name="upload" accept="image/jpeg"></p>
         <button type="submit" name="add_category">Подтвердить</button>
     </form>

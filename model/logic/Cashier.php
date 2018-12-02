@@ -1,6 +1,6 @@
 <?php
 
-require_once "D:\Workspace\UnitTesting\courseproject\model\\entity\CartRecord.php";
+require_once __DIR__ . '\..\entity\CartRecord.php';
 
 class Cashier
 {

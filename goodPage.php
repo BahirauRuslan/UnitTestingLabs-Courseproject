@@ -39,9 +39,20 @@ if ($uriRes->hasGET("add_product"))
         <link rel="shortcut icon" href="view/pictures/main.ico" type="image/x-icon">
         <link href="view/css/style.css" rel="stylesheet" type="text/css"/>
         <link href="view/css/categories.css" rel="stylesheet" type="text/css"/>
+        <link href="view/css/products.css" rel="stylesheet" type="text/css"/>
     </head>
 
     <body>
+        <header>
+            <?php
+            if (!FaceControl::getFaceControl()->isAdmin())
+            {
+                include "view/header.html";
+                include FaceControl::getFaceControl()->getOneOf("view/authorizationControl.html",
+                    "view/userControl.html");
+            }
+            ?>
+        </header>
         <div class="product_page">
             <?php
                 require_once "view/ProductView.php";

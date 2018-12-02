@@ -25,11 +25,9 @@ class HistoryView
             $delete_link = $uriRes->setToURI($uriRes->getOnlyValues($_SERVER['REQUEST_URI']),
                 'delete_history', $id);
             echo "<div class='item'>
-                    <div>$product_name</div>
-                    <div>$user_name</div>
-                    <div>$price x $count</div>
-                    <div>Order date: $order_date, confirm date: $confirm_date</div>
-                    <div><a href='$delete_link'>Удалить</a></div>
+                    <div class='item_txt'>$product_name, пользователь: $user_name, $price$ x $count,
+                    дата оформления: $order_date, дата подтверждения: $confirm_date</div>
+                    <div class='item_control'><a href='$delete_link'>Удалить</a></div>
                   </div>";
         }
     }
@@ -52,10 +50,9 @@ class HistoryView
             $delete_link = $uriRes->setToURI($uriRes->getOnlyValues($_SERVER['REQUEST_URI']),
                 'delete_history', $id);
             echo "<div class='item'>
-                    <div>$product_name</div>
-                    <div>$price x $count</div>
-                    <div>Order date: $order_date, confirm date: $confirm_date</div>
-                    <div><a href='$delete_link'>Удалить</a></div>
+                    <div class='item_txt'>$product_name, $price$ x $count, дата оформления: $order_date, 
+                    дата подтверждения: $confirm_date</div>
+                    <div class='item_control'><a href='$delete_link'>Удалить</a></div>
                   </div>";
         }
     }

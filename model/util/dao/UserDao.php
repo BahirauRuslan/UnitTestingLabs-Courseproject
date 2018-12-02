@@ -24,7 +24,7 @@ class UserDao extends IdentificationalDao
             $password = $record->getPassword();
             $table_name = $this->getTableName();
             $this->getDb()->query("INSERT INTO `$table_name` (`login`, `email`, `password`) 
-            VALUES ('$login', '$email', '$password')");
+                VALUES ('$login', '$email', '$password')");
         }
         else
         {

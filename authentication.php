@@ -39,7 +39,7 @@ if (isset($_POST['do_login'])) {
     <body>
         <form action="authentication.php" method="POST" class="user_identify">
             <h2>Вход</h2>
-            <p>Логин<br><input type="text" name="login"></p>
+            <p>Логин<br><input type="text" name="login" autocomplete="off"></p>
             <p>Пароль<br><input type="password" name="password"></p>
             <button type="submit" name="do_login">Войти</button>
         </form>

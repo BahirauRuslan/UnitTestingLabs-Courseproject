@@ -18,10 +18,9 @@ class CartView
             $count = $record->getCount();
             $delete_link = $uriRes->setToURI($uriRes->getOnlyValues($_SERVER['REQUEST_URI']),
                 'delete_rec', $id);
-            echo "<div>
-                    <div><p>$name ($price)$</p></div>
-                    <div><p>count: $count</p></div>
-                    <div><a href='$delete_link'>Удалить</a></div>
+            echo "<div class='item'>
+                    <div class='item_txt'>$name (x $count) $price$</div>
+                    <div class='item_control'><a href='$delete_link'>Удалить</a></div>
                   </div>";
         }
         if (count($cart) == 0)

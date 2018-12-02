@@ -24,11 +24,12 @@ class OrderView
             $delete_link = $uriRes->setToURI($uriRes->getOnlyValues($_SERVER['REQUEST_URI']),
                 'delete_order', $id);
             echo "<div class='item'>
-                    <div>$user_name</div>
-                    <div>$product_name $product_price x  $count</div>
-                    <div>$date</div>
-                    <div><a href='$submit_link'>Подтвердить</a></div>
-                    <div><a href='$delete_link'>Удалить</a></div>
+                    <div class='item_txt'>Пользователь: $user_name, $product_name $product_price$ x  $count,
+                    дата оформления: $date</div>
+                    <div class='item_control'>
+                    <a href='$submit_link'>Подтвердить</a>
+                    <a href='$delete_link'>Удалить</a>
+                    </div>
                   </div>";
         }
     }

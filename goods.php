@@ -71,6 +71,23 @@ if ($uriRes->hasGET("add_product"))
         <div class="product_panel">
             <form class="search">
                 <input type="search" name="product_name" placeholder="Поиск товара">
+                <?php
+                if ($uriRes->hasGET("category"))
+                {
+                    $val = $uriRes->getValue('category');
+                    echo "<input type='hidden' name='category' value='$val'>";
+                }
+                if ($uriRes->hasGET("sort_by"))
+                {
+                    $val = $uriRes->getValue('sort_by');
+                    echo "<input type='hidden' name='sort_by' value='$val'>";
+                }
+                if ($uriRes->hasGET("desc"))
+                {
+                    $val = $uriRes->getValue('desc');
+                    echo "<input type='hidden' name='desc' value='$val'>";
+                }
+                ?>
                 <input type="submit" value="найти">
             </form>
             <a href="

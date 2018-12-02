@@ -18,10 +18,11 @@ class ProductView
         $add_link = $uriRes->setToURI($uriRes->getOnlyValues($_SERVER['REQUEST_URI']),
             'add_product', $id);
         $add_div = ($isAdmin) ? "" : "<div><a href='$add_link'>Добавить в корзину</a></div>";
-        echo "<div><img src='$picture'></div>
-              <div>$name</div>
-              <div>$price</div>
-              <div>$description</div>" . $add_div;
+        echo "<div class='page_pic'><img src='$picture'></div>
+              <div class='name_page'>$name</div>
+              <div class='price_page'>Price: $price$</div>
+              <div class='cntrl_page'>$add_div</div>
+              <div>Описание:<br>$description</div>";
     }
 
     public function viewGoods($db, $pattern, $sort_column, $desc)

@@ -7,13 +7,13 @@
     margin-top: 1vw;
     border: 0.1vw solid rgb(222, 211, 220);
     width: 60vw;
-    height: 2.1vw;
+    height: 4.2vw;
     font-size: 1.5vw;
 }
 
 .item_txt {
     width: 30vw;
-    height: 2.1vw;
+    height: 4.2vw;
     border-radius: 0.1vw;
 }
 
@@ -21,7 +21,7 @@
     margin-top: -2.1vw;
     margin-left: 30vw;
     width: 30vw;
-    height: 2.1vw;
+    height: 4.2vw;
     color: rgba(176, 121, 208, 0.59);
     text-align: right;
 }

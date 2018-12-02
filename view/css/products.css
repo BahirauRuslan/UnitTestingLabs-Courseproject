@@ -41,3 +41,38 @@
 .price_block {
     font-size: 3vw;
 }
+
+.product_page {
+    width: 60vw;
+    margin-left: 20vw;
+}
+
+.page_pic, .product_page img {
+    width: 27.5vw;
+    height: 27.5vw;
+}
+
+.name_page {
+    width: 30vw;
+    height: 9vw;
+    margin-top: -27.5vw;
+    margin-left: 30vw;
+    text-align: right;
+    font-size: 4vw;
+}
+
+.price_page {
+    width: 30vw;
+    height: 9vw;
+    margin-left: 30vw;
+    text-align: right;
+    font-size: 5vw;
+}
+
+.cntrl_page {
+    width: 30vw;
+    height: 9vw;
+    margin-left: 30vw;
+    text-align: right;
+    font-size: 3vw;
+}

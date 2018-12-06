@@ -3,6 +3,7 @@ require_once "model/util/session.php";
 require_once "model/util/connectDB.php";
 require_once "model/util/utilFunc.php";
 require_once "model/logic/AuthenticationVerifyer.php";
+require_once "model/logic/Authenticator.php";
 
 if (isset($_POST['do_login'])) {
     $login = $_POST['login'];
@@ -17,7 +18,8 @@ if (isset($_POST['do_login'])) {
     $error = $verifyer->authenticationErrors($login, $password, $mysqli);
 
     if (!$error) {
-        $_SESSION['logged_user'] = $_POST['login'];
+        (new Authenticator())->authenticate($login, $error);
+        //$_SESSION['logged_user'] = $_POST['login'];
         $page = $_SESSION['logged_user'] == 'admin'
             ? "http://localhost:63342/courseproject/admin.php"
             : "http://localhost:63342/courseproject/index.php";

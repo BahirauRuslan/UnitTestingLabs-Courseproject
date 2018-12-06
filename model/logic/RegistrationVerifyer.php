@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '\..\util\dao\UserDao.php'; //"D:\Workspace\UnitTesting\courseproject\model\util\dao\UserDao.php";
+require_once __DIR__ . '\..\util\dao\UserDao.php';
 
 class RegistrationVerifyer
 {

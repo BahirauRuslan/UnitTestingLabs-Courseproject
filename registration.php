@@ -4,6 +4,7 @@ require_once "model/util/connectDB.php";
 require_once "model/util/utilFunc.php";
 require_once "model/logic/RegistrationVerifyer.php";
 require_once "model/util/dao/UserDao.php";
+require_once "model/logic/Registrator.php";
 
 if (isset($_POST["do_registration"])) {
     $login = $_POST['login'];
@@ -25,9 +26,7 @@ if (isset($_POST["do_registration"])) {
         $password2, $mysqli);
     
     if (!$error) {
-        $hash = password_hash($password, PASSWORD_DEFAULT);
-        $dao = new UserDao($mysqli);
-        $dao->add(new User(0, $login, $email, $hash));
+        (new Registrator())->registrateUser($login, $email, $password, $error, $mysqli);
         gotoPage("http://localhost:63342/courseproject/index.php");
     } else {
         echo $error . '</br>';

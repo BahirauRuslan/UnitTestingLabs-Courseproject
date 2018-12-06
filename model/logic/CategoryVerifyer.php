@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '\..\util\dao\CategoryDao.php';// "D:\Workspace\UnitTesting\courseproject\model\util\dao\CategoryDao.php";
+require_once __DIR__ . '\..\util\dao\CategoryDao.php';
 
 class CategoryVerifyer
 {

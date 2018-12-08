@@ -50,6 +50,3 @@ class UserDao extends IdentificationalDao
         }
     }
 }
-//require_once "D:\Workspace\UnitTesting\courseproject\model\util\connectDB.php";
-//$dao = new UserDao($mysqli);
-//var_dump($dao->getAll());

@@ -31,14 +31,7 @@ class OrderRecord extends Identificational
 
     public function setUser($user)
     {
-//        if ($user instanceof User || $user == null)
-//        {
-            $this->user = $user;
-//        }
-//        else
-//        {
-//            throw new InvalidArgumentException("user");
-//        }
+        $this->user = $user;
     }
 
     public function getProduct()

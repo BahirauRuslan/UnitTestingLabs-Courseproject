@@ -59,13 +59,5 @@ class User extends Identificational
     public function setPassword($password)
     {
         $this->password = $password;
-//        if ((strlen($password) >= 5) && (strlen($password) <= 32))
-//        {
-//            $this->password = password_hash($password, PASSWORD_DEFAULT);
-//        }
-//        else
-//        {
-//            throw new InvalidArgumentException("password");
-//        }
     }
 }

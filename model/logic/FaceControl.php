@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '\..\util\session.php';  //"D:\Workspace\UnitTesting\courseproject\model\util\session.php";
+require_once __DIR__ . '\..\util\session.php';
 
 class FaceControl
 {

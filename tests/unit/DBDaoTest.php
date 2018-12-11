@@ -29,7 +29,7 @@ class DBDaoTest extends \Codeception\Test\Unit
         $this->generateMysqliStub($this->mysqliResultStub,
             "SELECT * FROM `name`");
         $this->generateDBDaoStub();
-        $expected = array($object); //$object!
+        $expected = array($object);
         $actual = $this->dbDaoStub->getAll();
         $this->assertEquals($expected, $actual);
     }

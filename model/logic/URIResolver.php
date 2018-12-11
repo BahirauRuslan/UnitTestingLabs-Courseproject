@@ -83,6 +83,7 @@ class URIResolver
         foreach ($values as $val) {
             if (strripos($val, $name . '=') === 0) {
                 $valname = $val;
+                break;
             }
         }
         if (strripos($valuess, $valname) === 0 && strripos($valuess, "&")) {
